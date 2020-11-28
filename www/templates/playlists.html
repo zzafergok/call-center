@@ -1,0 +1,38 @@
+<ion-view view-title="Call Center">
+  <ion-content>
+
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="letter">
+      </label>
+    </div>
+
+    <div class="card" ng-if="letter && result.length > 0">
+      <div class="item item-text-wrap center if-div">
+        <h2>
+          <b>"{{letter}}"</b> kelimesine ait {{result.length}} sonuc bulundu.
+        </h2>
+      </div>
+    </div>
+
+    <div class="card animate__animated animate__rubberBand" ng-if="letter && result.length == 0">
+      <div class="item item-text-wrap center">
+        <h2>
+          <b>"{{letter}}"</b> kelimesine ait sonuc bulunamadi.
+        </h2>
+      </div>
+    </div>
+
+    <div class="list">
+      <a class="item item-avatar" ng-repeat="company in companys | filter: letter as result"  href="#/app/playlists/{{company.id}}">
+
+        <img src="{{company.img}}">
+        <h2>{{company.name}}</h2>
+        <p>{{company.category}}</p>
+
+      </a>
+    </div>
+
+  </ion-content>
+</ion-view>
